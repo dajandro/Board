@@ -1,0 +1,97 @@
+$bk-color-app: white;
+$block-height: 250px;
+$element-header-font-size: 20px;
+$font: 'Glegoo';
+$footer-font-size: 20px;
+$footer-height: 45px;
+$header-font-size: 70px;
+$header-footer-color: orange;
+$header-size: 100px;
+$search-bar-height: 45px;
+
+body{
+  background: $bk-color-app;
+  font-family: $font, sans-serif;
+}
+
+button{
+  font-family: $font, sans-serif; 
+}
+
+input{
+  font-family: $font, sans-serif;
+}
+
+.header{
+  background: $header-footer-color;
+  display: inline-block;
+  height: $header-size;
+  margin-bottom: 15px;
+  text-align: center;
+  width: 101%;
+}
+
+.header h1{
+  font-size: $header-font-size;
+  transform: translateY(-10px);
+}
+
+.element-header{
+  font-size: $element-header-font-size;
+  font-weight: bold;
+  line-height: $element-header-font-size;
+  margin: 5px 0px 15px 0px;
+  width: 100%;
+}
+
+.element-color{
+  margin: 15px 0px 5px 0px;
+}
+
+.color-picker{
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  height: 20px;
+  margin: 0 0 0 5px;
+  width: 20px;
+}
+
+.element{
+  border-style: solid;
+  font-family: $font, sans-serif;
+  height: 100%;
+  margin: 15px 50px 15px 92px;
+  min-height: $block-height;
+  /*
+  margin: top right bottom left
+  */  
+}
+
+.note-body{
+  font-weight: bold;
+}
+
+.element-footer{
+  height: 30px;
+  padding-top: 5px;
+  position: relative;
+  width: 100%;
+}
+
+.general-footer{
+  background-color: $header-footer-color;
+  bottom: 0;
+  font-size: $footer-font-size;
+  height: $footer-height;
+  left: 0;
+  padding: 10px 0 0 10px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  z-index: 999;
+}
+
+.todo-list-container{
+  margin-top: 10px;
+}
