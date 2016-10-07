@@ -59,6 +59,13 @@ const element = (state = {}, action) => {
         return { ...state };
       }
       return state;
+    case 'ARCHIVE_ELEMENT':
+      if(state.id === action.payload.elementId){
+        state.archived = true;
+        state.update_date = new Date().toLocaleString();
+        return { ...state };
+      }
+      return state;
     case 'CHANGE_COLOR':
       if(state.id === action.payload.elementId){
         state.color = action.payload.color;
@@ -104,6 +111,8 @@ const elements = (state = [], action) => {
     case 'UPDATE_NOTE':
       return state.map(e => element(e, action));
     case 'UPDATE_TITLE':
+      return state.map(e => element(e, action));
+    case 'ARCHIVE_ELEMENT':
       return state.map(e => element(e, action));
     case 'CHANGE_COLOR':
       return state.map(e => element(e, action));    

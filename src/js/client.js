@@ -22,8 +22,6 @@ import { todos } from './reducers/todos';
 import { elements } from './reducers/elements';
 import { visibilityFilterElements } from './reducers/visibility';
 
-//import {} from './e2e/todos.spec';
-
 const { Component } = React;
 
 const todoApp = combineReducers({
@@ -241,6 +239,20 @@ const Element = ({ element, colors}) => {
       <label>Create: {element.create_date}</label>
       <br></br>
       <label>Last update: {element.update_date}</label>
+      <br></br>
+      <button
+        class="btn btn-primary col-sm-offset-5 element-archivar"
+        onClick={ 
+          () => {
+            store.dispatch({
+              type: 'ARCHIVE_ELEMENT',
+              payload: {
+                elementId: element.id
+              }
+            });
+          } 
+        }
+      >Archivar</button>
     </div>
   );
 }
@@ -300,8 +312,9 @@ const render = () => {
   ReactDOM.render(
      <ElementsApp
       { ...store.getState() } />,
-    document.getElementById('root')
+    document.getElementById('root')    
   );
+  console.log(store.getState());
 };
 
 render();
@@ -309,10 +322,3 @@ store.subscribe(render);
 store.subscribe( () => {
   saveState(store.getState());
 });
-
-/* Tests
-
-testAddTodo();
-testToggleTodo();
-console.log("All todo tests passed!");
-*/
