@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import deepFreeze from 'deep-freeze';
-import expect from 'expect';
+import undoable from 'redux-undo';
+import {ActionCreators} from 'redux-undo';
 import v4 from 'uuid-v4';
 import '../styles/index.scss';
 
@@ -22,6 +22,8 @@ import { todos } from './reducers/todos';
 import { elements } from './reducers/elements';
 import { visibilityFilterElements } from './reducers/visibility';
 
+import {} from './e2e/todos.spec';
+
 const { Component } = React;
 
 const todoApp = combineReducers({
@@ -32,7 +34,7 @@ const todoApp = combineReducers({
 const loadState = () => {
   try{
     let result = JSON.parse(localStorage.getItem('state'));
-    return result ? result : undefined;
+    return result ? {past: [], present: result, future: []} : undefined;
   }
   catch(err){
     return undefined;
@@ -41,14 +43,14 @@ const loadState = () => {
 
 const saveState = (state) => {
   try{
-    localStorage.setItem('state',JSON.stringify(state));
+    localStorage.setItem('state',JSON.stringify(state.present));
   }
   catch(err){
 
   }
 }
 
-const store = createStore(todoApp, loadState());
+const store = createStore(undoable(todoApp), loadState());
 
 const getVisibleElements = (elements, visibilityFilter) => {
   if(visibilityFilter === 'SHOW_ALL_ELEMENTS')
@@ -293,6 +295,8 @@ const ElementsApp = ({ elements, visibilityFilterElements }) => (
         colors={ Colors }
         />
       
+      <button onClick={() => {store.dispatch(ActionCreators.undo());}}>Undo</button>
+      <button onClick={() => {store.dispatch(ActionCreators.redo());}}>Redo</button>
       <ElementsFooter
       currentVisibilityFilter={ visibilityFilterElements }
       onFilterClicked={
@@ -311,7 +315,7 @@ const ElementsApp = ({ elements, visibilityFilterElements }) => (
 const render = () => {
   ReactDOM.render(
      <ElementsApp
-      { ...store.getState() } />,
+      { ...store.getState().present } />,
     document.getElementById('root')    
   );
   console.log(store.getState());

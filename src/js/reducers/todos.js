@@ -29,8 +29,8 @@ const todos = (state = [], action) => {
     case 'ADD_TODO':
       if ( action.payload.text !== ""){
         return [
-          todo(undefined, action),
-          ...state
+          ...state,
+          todo(undefined, action)
         ];
       }
       return state;

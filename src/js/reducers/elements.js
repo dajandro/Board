@@ -97,14 +97,14 @@ const elements = (state = [], action) => {
       return state.map(e => element(e, action));
     case 'ADD_TODO_LIST':
       return [
-        element(undefined, action),
-        ...state      
+       ...state,
+        element(undefined, action)
       ];
     case 'ADD_NOTE':
       if ( action.payload.text !== "" ){
         return [
-          element(undefined, action),
-          ...state     
+          ...state,
+          element(undefined, action)
         ];
       }
       return state;

@@ -1,4 +1,4 @@
-import todos from '../reducers/todos';
+import {todos} from '../reducers/todos';
 import deepFreeze from 'deep-freeze';
 import expect from 'expect';
 
@@ -71,4 +71,4 @@ const testToggleTodo = () => {
 
 testAddTodo();
 testToggleTodo();
-console.log("All todo tests passed!");
+console.log("All To Do's tests passed!");
