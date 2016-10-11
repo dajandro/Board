@@ -19,7 +19,7 @@ export const Footer = ({ currentVisibilityFilter, onFilterClicked }) => (
     <FilterLink
       visibilityFilter="SHOW_ACTIVE"
       currentVisibilityFilter={ currentVisibilityFilter }
-      onFilterClicked={ onFilterClicked }>Active</FilterLink>
+      onFilterClicked={ onFilterClicked }>Active</FilterLink>    
   </div>
 )
 

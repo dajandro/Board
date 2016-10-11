@@ -28,7 +28,7 @@ const { Component } = React;
 
 const todoApp = combineReducers({
   elements,
-  visibilityFilterElements,
+  visibilityFilterElements
 });
 
 const loadState = () => {
@@ -259,7 +259,8 @@ const Element = ({ element, colors}) => {
   );
 }
 
-const ElementsApp = ({ elements, visibilityFilterElements }) => (
+const ElementsApp = ({ elements, visibilityFilterElements }) => {
+  return(
   <div>
     <GeneralHeader/>    
       <AddElement
@@ -305,12 +306,13 @@ const ElementsApp = ({ elements, visibilityFilterElements }) => (
             type: 'SET_VISIBILITY_FILTER_ELEMENTS',
             payload: { visibilityFilter: filter }
           });
-        }
-      } />
-
+        }      
+      }      
+      />
 
   </div>
-);
+  );
+};
 
 const render = () => {
   ReactDOM.render(

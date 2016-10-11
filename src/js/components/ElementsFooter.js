@@ -20,6 +20,7 @@ export const ElementsFooter = ({ currentVisibilityFilter, onFilterClicked }) => 
       visibilityFilter="SHOW_NOTES"
       currentVisibilityFilter={ currentVisibilityFilter }
       onFilterClicked={ onFilterClicked }>Notes</FilterLink>
+    {' '}    
   </div>
 }
 
